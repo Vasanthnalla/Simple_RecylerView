@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="AlbumListBinding" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_bottom_layout_height"
+            android:orientation="horizontal"
+            android:background="@color/bg_activity_detail"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.v7.widget.SearchView
+                android:id="@+id/search"
+                style="@style/SearchViewTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_small"
+                app:closeIcon="@drawable/ic_close"
+                app:goIcon="@drawable/ic_search"
+                android:layout_toLeftOf="@+id/divider"
+                android:layout_marginRight="10dp"
+                app:queryHint="@string/search_query_hint"
+                app:searchHintIcon="@drawable/ic_search"
+                app:searchIcon="@drawable/ic_search" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/sorting"
+                android:background="@color/ic_tv_selected"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:visibility="gone"
+                android:id="@+id/divider"/>
+
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:id="@+id/sorting"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:visibility="gone"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/sort"
+                />
+
+        </RelativeLayout>
+
+
+        <include
+            android:id="@+id/loader_layout"
+            layout="@layout/view_loader"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/empty_layout"
+            layout="@layout/view_empty"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/album_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/search_view"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/margin_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/search_view"
+            android:visibility="gone"
+            android:id="@+id/rel_sorting"
+            android:background="@color/search_color_control_activated"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sort by trackname"
+                android:id="@+id/sort_track"
+                android:layout_margin="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sort by artistname"
+                android:id="@+id/sort_artist"
+                android:layout_margin="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sort by collectionprice"
+                android:id="@+id/sort_collectionprice"
+                android:layout_margin="10dp"
+                />
+        </LinearLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/addFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/ic_tv_selected"
+            android:src="@drawable/shoppingcart"
+            />
+    </RelativeLayout>
+
+</layout>
